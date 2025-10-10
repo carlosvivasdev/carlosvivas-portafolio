@@ -1,13 +1,19 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
+
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig: NextConfig = {
-  /* config options here */
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
+
   compress: true,
+
   images: {
-    formats: ['image/avif', 'image/webp'],
+    formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
@@ -16,10 +22,46 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ["@lottiefiles/dotlottie-react"],
   },
 
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.optimization = {
+        ...config.optimization,
+        moduleIds: "deterministic",
+        runtimeChunk: "single",
+        splitChunks: {
+          chunks: "all",
+          cacheGroups: {
+            default: false,
+            vendors: false,
+            lottie: {
+              name: "lottie",
+              test: /[\\/]node_modules[\\/](@lottiefiles)[\\/]/,
+              priority: 40,
+              reuseExistingChunk: true,
+            },
+            react: {
+              name: "react",
+              test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+              priority: 30,
+              reuseExistingChunk: true,
+            },
+            common: {
+              name: "common",
+              minChunks: 2,
+              priority: 10,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+    return config;
+  },
+
   async headers() {
     return [
       {
-        source: "/:all*(svg|jpg|png|webp|avif|gif)",
+        source: "/:all*(svg|jpg|png|webp|avif|gif|lottie)",
         headers: [
           {
             key: "Cache-Control",
@@ -38,11 +80,11 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
 };
 
-export default nextConfig;
+// Exporta envuelto en el analizador
+export default withBundleAnalyzer(nextConfig);
 
-// added by create cloudflare to enable calling `getCloudflareContext()` in `next dev`
+// Para Cloudflare (mantén esto)
 import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 initOpenNextCloudflareForDev();
