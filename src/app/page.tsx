@@ -1,6 +1,10 @@
+import { Hero, heroData } from "@/feature/hero";
+
 
 export default function Home() {
   return (
-    <h1>Soy carlos</h1>
+    <main>
+      <Hero data={heroData} />
+    </main>
   );
 }
