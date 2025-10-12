@@ -7,7 +7,11 @@ import { DecorativeLine } from "./DecorativeLine";
 export function Hero({ data }: HeroProps) {
   return (
     <>
-      <section className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto px-4 relative min-h-dvh md:min-h-screen"
+      <section className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto px-4 relative"
+        style={{
+          minHeight: 'calc(100dvh - var(--header-height))',
+        }}
+
         aria-labelledby="hero-heading"
       >
         <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-xl">

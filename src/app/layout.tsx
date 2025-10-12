@@ -1,6 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { TopHeader, topHeaderData } from "@/feature/topheader";
 import "./globals.css";
+
+config.autoAddCss = false;
 
 const inter = Inter({
   variable: "--font-inter",
@@ -63,6 +68,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} antialiased`}
       >
+        <TopHeader data={topHeaderData} />
         {children}
       </body>
     </html>
