@@ -2,8 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { TopHeader, topHeaderData } from "@/feature/topheader";
 import "./globals.css";
+import { TopHeader, topHeaderData } from "@/feature/topheader";
+import { Navigation, navigationData } from "@/feature/navigation";
 
 config.autoAddCss = false;
 
@@ -70,6 +71,7 @@ export default function RootLayout({
       >
         <TopHeader data={topHeaderData} />
         {children}
+        <Navigation data={navigationData} />
       </body>
     </html>
   );
