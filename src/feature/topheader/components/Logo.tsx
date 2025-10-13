@@ -9,10 +9,11 @@ interface LogoProps {
 export function Logo({ text, url, highlight }: LogoProps) {
     return (
         <Link href={url} className="group">
-            <span className="text-xl md:text-2xl md:font-semibold font-bold cursor-pointer transition-transform duration-300 group-hover:scale-105 inline-block">
+            <span className="text-xl md:text-2xl md:font-semibold font-bold cursor-pointer inline-block">
                 {text}
+                <span className="text-[#12ACFF]">{highlight}</span>
             </span>
-            <span className="text-[#12ACFF]">{highlight}</span>
+
         </Link>
     )
 }

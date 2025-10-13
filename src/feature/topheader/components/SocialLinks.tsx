@@ -21,7 +21,7 @@ const iconMap: Record<string, IconDefinition> = {
 
 export function SocialLinks({ links, className = "" }: SocialLinksProps) {
   return (
-    <div className={`gap-2 flex ${className}`}>
+    <div className={`gap-1 md:gap-3 flex ${className}`}>
       {links.map((link) => (
         <a
           href={link.url}
@@ -29,12 +29,12 @@ export function SocialLinks({ links, className = "" }: SocialLinksProps) {
           aria-label={link.ariaLabel}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[#12ACFF] hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#12ACFF] focus:ring-offset-2 rounded p-1"
+          className="hover:text-[#12ACFF] hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#12ACFF] focus:ring-offset-2 rounded p-1"
         >
           <FontAwesomeIcon
             icon={iconMap[link.icon]}
             className="w-5 h-5"
-            size="lg" />
+            size="xl" />
         </a>
       ))}
     </div>
