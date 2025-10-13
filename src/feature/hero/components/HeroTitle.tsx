@@ -29,7 +29,7 @@ export function HeroTitle({ greeting, name, role }: HeroTitleProps) {
                     {/* Línea decorativa mobile */}
                     <span
                         aria-hidden="true"
-                        className="block w-20 h-1 bg-[#12ACFF] mt-1 mx-auto md:hidden"
+                        className="block w-30 h-1 bg-[#12ACFF] mt-1 mx-auto md:hidden"
                     />
 
                     {/* Rol/Título */}

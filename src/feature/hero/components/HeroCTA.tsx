@@ -15,7 +15,7 @@ export function HeroCTA({ primary, secondary }: HeroCTAProps) {
   const btnBase = "w-34 h-9 md:w-38 md:h-10 rounded-full font-medium transition-colors duration-200";
 
   return (
-    <div className="flex flex-row gap-2 mt-6">
+    <div className="flex flex-row gap-2 mt-2 md:mt-6">
 
       <Link href={primary.href}
         className={`bg-[#12ACFF] hover:bg-[#0d8ed8] text-white ${btnBase} flex items-center justify-center`}

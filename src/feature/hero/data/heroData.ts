@@ -5,6 +5,7 @@ export const heroData: HeroData = {
   name: "Carlos Vivas",
   role: "Software Developer",
   description: "Soy Carlos Vivas apasionado por la automatización, Kubernetes, CI/CD y Cloud. Ayudo a equipos a construir infraestructuras resilientes y eficientes.",
+  descriptionShort: "Automatización, Kubernetes, CI/CD y Cloud",
   cta: {
     primary: {
       label: "Ver Proyectos",

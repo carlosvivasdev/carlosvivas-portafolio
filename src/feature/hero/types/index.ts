@@ -3,6 +3,7 @@ export interface HeroData {
   name: string;
   role: string;
   description: string;
+  descriptionShort: string;
   cta: {
     primary: {
       label: string;

@@ -7,9 +7,10 @@ import { DecorativeLine } from "./DecorativeLine";
 export function Hero({ data }: HeroProps) {
   return (
     <>
-      <section className="flex flex-col md:flex-row items-center justify-center gap-10 max-w-7xl mx-auto px-4 relative"
+      <section className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 max-w-7xl mx-auto px-4 pb-24 md:pb-20 relative "
         style={{
           minHeight: 'calc(100dvh - var(--header-height))',
+          maxHeight: 'calc(100dvh - var(--header-height))',
         }}
 
         aria-labelledby="hero-heading"
@@ -20,6 +21,9 @@ export function Hero({ data }: HeroProps) {
             name={data.name}
             role={data.role}
           />
+          <p className="mt-2 mb-4 text-sm text-gray-600 dark:text-gray-400 md:hidden max-w-xs">
+            {data.descriptionShort}
+          </p>
           <p className="my-2 max-w-md hidden md:block text-gray-600">
             {data.description}
           </p>
