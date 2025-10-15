@@ -1,7 +1,18 @@
+/**
+ * Navigation Component
+ * 
+ * Navegación tipo dock/mobile flotante en la parte inferior
+ * Con animaciones fluidas usando Framer Motion
+ * Siguiendo principios SOLID:
+ * - Single Responsibility: Solo maneja la navegación principal
+ * - Open/Closed: Extensible mediante props
+ * - Dependency Inversion: Depende de abstracciones (tipos)
+ */
+
 "use client";
 
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import type { NavigationData } from "../types";
 import { NavItem } from "./NavItem";
 
@@ -16,8 +27,8 @@ export function Navigation({ data }: NavigationProps) {
     <motion.nav
       role="navigation"
       aria-label="Navegación principal"
-      initial={{ y: 100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ scaleX: 0, opacity: 0 }}
+      animate={{ scaleX: 1, opacity: 1 }}
       transition={{
         type: "spring",
         stiffness: 260,
@@ -35,19 +46,18 @@ export function Navigation({ data }: NavigationProps) {
                    dark:shadow-black/20"
       >
         <ul role="menubar" className="flex gap-2.5">
-          <AnimatePresence mode="wait">
-            {data.items.map((item) => {
-              const isActive = pathname === item.href;
+          {data.items.map((item, index) => {
+            const isActive = pathname === item.href;
 
-              return (
-                <NavItem
-                  key={item.href}
-                  item={item}
-                  isActive={isActive}
-                />
-              );
-            })}
-          </AnimatePresence>
+            return (
+              <NavItem
+                key={item.href}
+                item={item}
+                isActive={isActive}
+                index={index}
+              />
+            );
+          })}
         </ul>
       </motion.div>
     </motion.nav>

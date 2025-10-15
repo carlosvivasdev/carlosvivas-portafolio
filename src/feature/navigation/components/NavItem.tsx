@@ -1,37 +1,73 @@
-"use client"
+/**
+ * NavItem Component
+ * 
+ * Single Responsibility: Renderiza un item individual del menú de navegación
+ * Componente reutilizable con estados hover y active
+ * Animaciones fluidas con Framer Motion
+ */
+
+"use client";
 
 import Link from "next/link";
-import type { NavItem as NavItemType } from "../types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faEnvelope, faFolder, faHome, faKeyboard, faUser } from "@fortawesome/free-solid-svg-icons";
-import { ActiveIndicator } from "./ActiveIndicator";
 import { motion } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import {
+  faEnvelope,
+
+  faFolderOpen,
+
+  faHome,
+  faKeyboard,
+  faUser
+} from "@fortawesome/free-solid-svg-icons";
+import type { NavItem as NavItemType } from "../types";
+import { ActiveIndicator } from "./ActiveIndicator";
 
 interface NavItemProps {
   item: NavItemType;
   isActive: boolean;
+  index: number;
 }
 
+// Mapeo de strings a iconos de FontAwesome
 const iconMap: Record<string, IconDefinition> = {
   home: faHome,
   about: faUser,
-  projects: faFolder,
+  projects: faFolderOpen,
   keyboard: faKeyboard,
   contact: faEnvelope,
-}
+};
 
-export function NavItem({ item, isActive }: NavItemProps) {
+// Configuración de animaciones - Fácil de ajustar y testear
+const ANIMATIONS = {
+  item: {
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    getTransition: (index: number) => ({
+      duration: 0.3,
+      delay: index * 0.05,
+      type: "spring" as const, // ✅ Literal type
+      stiffness: 300,
+      damping: 20,
+    }),
+  },
+  icon: {
+    hover: { scale: 1.1 },
+    tap: { scale: 0.95 },
+  },
+} as const;
+
+export function NavItem({ item, isActive, index }: NavItemProps) {
   const icon = iconMap[item.icon];
+
   return (
     <motion.li
       role="none"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.2 }}
+      initial={ANIMATIONS.item.initial}
+      animate={ANIMATIONS.item.animate}
+      transition={ANIMATIONS.item.getTransition(index)}
     >
-
-
       <Link
         href={item.href}
         role="menuitem"
@@ -39,21 +75,28 @@ export function NavItem({ item, isActive }: NavItemProps) {
         aria-current={isActive ? "page" : undefined}
         className="group relative flex items-center justify-center rounded-xl p-2 transition-all duration-200"
       >
+        {/* Background activo animado */}
         {isActive && <ActiveIndicator />}
+
+        {/* Icono */}
         <motion.div
           className="relative z-10"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={ANIMATIONS.icon.hover}
+          whileTap={ANIMATIONS.icon.tap}
         >
           <FontAwesomeIcon
             icon={icon}
             className={`
-              text-2xl transition-colors duration-200
-              ${isActive ? "text-white" : "text-gray-700 dark:text-gray-300 group-hover:text-[#12ACFF]"}
+              text-2xl transition-all duration-200
+              ${isActive
+                ? "text-white drop-shadow-md"
+                : "text-gray-800 dark:text-gray-200 group-hover:text-[#12ACFF] group-hover:drop-shadow-sm"}
             `}
             aria-hidden="true"
           />
         </motion.div>
+
+        {/* Tooltip - Usa group-hover en lugar de whileHover */}
         <span
           className="pointer-events-none absolute -top-12 
                      whitespace-nowrap rounded-lg bg-gray-900 
@@ -72,7 +115,6 @@ export function NavItem({ item, isActive }: NavItemProps) {
           />
         </span>
       </Link>
-
     </motion.li>
   );
 }
