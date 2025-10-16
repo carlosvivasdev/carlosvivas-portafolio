@@ -17,7 +17,7 @@ export const heroData: HeroData = {
     }
   },
   animation: {
-    src: "/lotties/HeroAnimation.lottie",
+    src: "/lotties/5.webm",
     ariaLabel: "Developer Animation"
   }
 };
