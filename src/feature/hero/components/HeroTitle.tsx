@@ -13,7 +13,7 @@ export function HeroTitle({ greeting, name, role }: HeroTitleProps) {
                     style={{ fontSize: '3rem', lineHeight: '1.2' }}
                 >
                     {/* Saludo con punto decorativo */}
-                    <span className="text-2xl font-bold relative block after:inline-block after:rounded-full after:bg-[#12ACFF] after:ml-2 after:w-1.5 after:h-1.5 md:after:w-2.5 md:after:h-2.5">
+                    <span className="text-2xl font-bold relative block after:inline-block after:rounded-full after:bg-primary after:ml-2 after:w-1.5 after:h-1.5 md:after:w-2.5 md:after:h-2.5">
                         {greeting}
                     </span>
 
@@ -22,14 +22,14 @@ export function HeroTitle({ greeting, name, role }: HeroTitleProps) {
                         Soy {name}
                         <span
                             aria-hidden="true"
-                            className="hidden md:block absolute left-[-1508px] top-1/2 -translate-y-1/2 w-[1500px] h-1 bg-[#12ACFF]"
+                            className="hidden md:block absolute left-[-1508px] top-1/2 -translate-y-1/2 w-[1500px] h-1 bg-primary"
                         />
                     </span>
 
                     {/* Línea decorativa mobile */}
                     <span
                         aria-hidden="true"
-                        className="block w-30 h-1 bg-[#12ACFF] mt-1 mx-auto md:hidden"
+                        className="block w-30 h-1 bg-primary mt-1 mx-auto md:hidden"
                     />
 
                     {/* Rol/Título */}

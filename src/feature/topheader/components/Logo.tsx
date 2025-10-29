@@ -11,7 +11,7 @@ export function Logo({ text, url, highlight }: LogoProps) {
         <Link href={url} className="group">
             <span className="text-xl md:text-2xl md:font-semibold font-bold cursor-pointer inline-block">
                 {text}
-                <span className="text-[#12ACFF]">{highlight}</span>
+                <span className="text-primary">{highlight}</span>
             </span>
 
         </Link>

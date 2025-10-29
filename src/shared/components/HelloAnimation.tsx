@@ -87,7 +87,7 @@ export function HelloAnimation() {
             transition={ANIMATIONS.greeting.transition}
             className="text-4xl md:text-6xl font-bold"
           >
-            <span className="text-[#12ACFF]">.</span>
+            <span className="text-primary">.</span>
             {GREETINGS[currentIndex]}
           </motion.h1>
         </motion.div>

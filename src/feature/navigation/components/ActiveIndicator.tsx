@@ -10,7 +10,7 @@ export function ActiveIndicator({ layoutId = "activeTab" }: ActiveIndicatorProps
   return (
     <motion.span
       layoutId={layoutId}
-      className="absolute inset-0 bg-[#12ACFF] rounded-xl shadow-md"
+      className="absolute inset-0 bg-primary rounded-xl shadow-md"
       transition={{
         type: "spring",
         stiffness: 380,

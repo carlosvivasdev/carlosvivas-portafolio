@@ -29,7 +29,7 @@ export function SocialLinks({ links, className = "" }: SocialLinksProps) {
           aria-label={link.ariaLabel}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-[#12ACFF] hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#12ACFF] focus:ring-offset-2 rounded p-1"
+          className="hover:text-primary hover:scale-110 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded p-1"
         >
           <FontAwesomeIcon
             icon={iconMap[link.icon]}

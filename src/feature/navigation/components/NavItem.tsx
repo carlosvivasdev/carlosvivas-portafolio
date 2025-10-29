@@ -90,7 +90,7 @@ export function NavItem({ item, isActive, index }: NavItemProps) {
               text-2xl transition-all duration-200
               ${isActive
                 ? "text-white drop-shadow-md"
-                : "text-gray-800 dark:text-gray-200 group-hover:text-[#12ACFF] group-hover:drop-shadow-sm"}
+                : "text-gray-800 dark:text-gray-200 group-hover:text-primary group-hover:drop-shadow-sm"}
             `}
             aria-hidden="true"
           />
