@@ -9,7 +9,7 @@ export const topHeaderData: TopHeaderData = {
   socialLinks: [
     {
       name: "Instagram",
-      url: "https://www.instagram.com/",
+      url: "https://www.instagram.com/carlosvivas_dev",
       icon: "instagram",
       ariaLabel: "Instagram de Carlos Vivas"
     },
