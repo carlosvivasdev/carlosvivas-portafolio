@@ -33,7 +33,7 @@ export function HeroTitle({ greeting, name, role }: HeroTitleProps) {
                     />
 
                     {/* Rol/Título */}
-                    <span className="block text-3xl md:text-4xl font-bold mt-2 md:mt-0">
+                    <span className="block text-3xl md:text-5xl font-bold mt-2 md:mt-0">
                         {role}
                     </span>
                 </h1>
