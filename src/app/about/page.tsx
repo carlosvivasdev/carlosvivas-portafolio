@@ -1,5 +1,5 @@
 import { aboutMeData, HeroAboutMe } from "@/feature/aboutme";
-import { SkillsE } from "@/feature/skills/SkillsE";
+// import { SkillsE } from "@/feature/skills/SkillsE";
 
 export default function AboutMe() {
 
